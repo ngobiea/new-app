@@ -16,7 +16,12 @@ const config: ForgeConfig = {
     asar: true,
   },
   rebuildConfig: {},
-  makers: [new MakerSquirrel({}), new MakerZIP({}, ['darwin']), new MakerRpm({}), new MakerDeb({})],
+  makers: [
+    new MakerSquirrel({}),
+    new MakerZIP({}, ['darwin']),
+    new MakerRpm({}),
+    new MakerDeb({}),
+  ],
   plugins: [
     new AutoUnpackNativesPlugin({}),
     new WebpackPlugin({
@@ -30,11 +35,8 @@ const config: ForgeConfig = {
             name: 'main_window',
             preload: {
               js: './src/preload.ts',
-              config: {
-
-              }
+              config: {},
             },
-
           },
         ],
       },
@@ -56,12 +58,13 @@ const config: ForgeConfig = {
       name: '@electron-forge/publisher-github',
       config: {
         repository: {
-          owner: 'electron',
-          name: 'electron-forge',
+          owner: 'ngobiea',
+          name: 'new-app',
         },
+        prerelease: true,
       },
     },
-  ]
+  ],
 };
 
 export default config;
